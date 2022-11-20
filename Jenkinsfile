@@ -13,6 +13,11 @@ pipeline {
             steps {
                 sh 'npm test'
             }
+            post {
+            failure {
+            echo "Tests failed"
+            }
+        }
         }
         stage('Deploy to heroku'){
             steps {
