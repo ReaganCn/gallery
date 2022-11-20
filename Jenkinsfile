@@ -3,6 +3,12 @@ pipeline {
     tools {
         nodejs "nodejs"
     }
+
+    environment 
+        {
+        APP_LINK = 'https://gallery-app-ip1.herokuapp.com/'
+        }
+
     stages {
         stage('Build the project') { 
             steps {
@@ -23,6 +29,12 @@ pipeline {
             steps {
                 withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
                     sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/gallery-app-ip1.git master'
+                }
+            }
+
+            post {
+                always {
+                    slackSend color: "good", message: "Deployed. Build ${BUILD_NUMBER}, heroku link: ${APP_LINK}"
                 }
             }
 
