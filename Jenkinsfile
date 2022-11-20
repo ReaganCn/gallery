@@ -14,11 +14,6 @@ pipeline {
             steps {
                 sh 'npm install' 
             }
-                        post {
-                success {
-                    slackSend color: "good", message: "Deploy successful. Build ${BUILD_ID}, heroku link: ${APP_LINK}"
-                }
-            }
         }
         stage('Run Tests'){
             steps {
@@ -36,7 +31,11 @@ pipeline {
                     sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/gallery-app-ip1.git master'
                 }
             }
-
+            post {
+                success {
+                    slackSend color: "good", message: "Deploy successful. Build ${BUILD_ID}, heroku link: ${APP_LINK}"
+                }
+            }
         }
     }
 }
