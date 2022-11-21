@@ -1,3 +1,3 @@
 # gallery
 
-Author: ReaganCharana
+Author: Reagan Charana
