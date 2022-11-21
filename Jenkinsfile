@@ -9,6 +9,11 @@ pipeline {
         APP_LINK = 'https://gallery-app-ip1.herokuapp.com/'
         }
     stages {
+        stage('Cloning the repo'){
+            steps {
+             git 'https://github.com/ReaganCn/gallery.git'   
+            }
+        }
         stage('Build the project') { 
             steps {
                 sh 'npm install' 
