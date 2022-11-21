@@ -37,7 +37,7 @@ pipeline {
             }
             post {
                 success {
-                    slackSend color: "good", message: "Deploy successful. Build ${BUILD_ID}, heroku link: ${APP_LINK}"
+                    slackSend color: "good", message: "Deploy successful. Build #${BUILD_ID}, heroku link: ${APP_LINK}"
                 }
             }
         }
