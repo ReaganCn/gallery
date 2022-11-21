@@ -8,13 +8,6 @@ pipeline {
         {
         APP_LINK = 'https://gallery-app-ip1.herokuapp.com/'
         }
-            
-            stage('Cloning the repo'){
-            steps {
-             git 'https://github.com/ReaganCn/java-todo.git'   
-            }
-        }
-
     stages {
         stage('Build the project') { 
             steps {
