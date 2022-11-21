@@ -8,7 +8,7 @@ pipeline {
         {
         APP_LINK = 'https://gallery-app-ip1.herokuapp.com/'
         }
-
+        
     stages {
         stage('Build the project') { 
             steps {
