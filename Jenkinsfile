@@ -8,7 +8,13 @@ pipeline {
         {
         APP_LINK = 'https://gallery-app-ip1.herokuapp.com/'
         }
-        
+            
+            stage('Cloning the repo'){
+            steps {
+             git 'https://github.com/ReaganCn/java-todo.git'   
+            }
+        }
+
     stages {
         stage('Build the project') { 
             steps {
@@ -28,7 +34,7 @@ pipeline {
         stage('Deploy to heroku'){
             steps {
                 withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
-                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/gallery-app-ip1.git master'
+                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/gallery-app-ip1.git main'
                 }
             }
             post {
